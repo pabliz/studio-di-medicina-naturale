@@ -1,132 +1,27 @@
 .header {
-    background: $darkest;
-    color: $lightest;
-    display: none;
     width: 100%;
-    @mixin atSmall {
-        z-index: 1;
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        padding: 2.4rem;
-        padding-left: 4.8rem;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    @mixin atMedium {
-        padding: 0;
-        padding-left: 4.8rem;
-        padding-bottom: 1.2rem;
-    }
-    @mixin atLarge {
-        padding-top: 1.2rem;
-        padding-left: 4.8rem;
-        padding-bottom: 2.4rem;
-    }
-    & h2 {
-        @mixin atSmall {
-            color: $lightest;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke-width: 1px;
-        }
-    }
-    &__mobile {
-        background: $darkest;
-        color: $lightest;
-        display: block;
-        padding: 2.4rem;
-        @mixin atSmall {
-            display: none;
-        }
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    z-index: -1;
+    &__content {
+        width: 100%;
+        margin: 0 auto;
+        padding: 2.4rem 2.4rem 0;
     }
     &__title {
-        position: relative;
-        margin: 0;
-        &:after {
-            background: $dark;
-            bottom: 0;
-            content: '';
-            height: 1px;
-            left: 0;
-            position: absolute;
-            transition: transform 0.7s;
+        margin: auto;
+        & span.t1 {
             width: 100%;
-            transform: scaleX(0);
-            transform-origin: right center;
+            text-align: left;
         }
-        &:hover {
-            @mixin atLarge {
-                -webkit-text-fill-color: transparent;
-                -webkit-text-stroke-width: 1px;
-            }
-            &:after {
-                transform: scaleX(1);
-                transform-origin: left center;
-            }
-        }
-    }
-    &__subtitle {
-        margin: 0;
-        position: relative;
-        color: $lightest;
-        &:after {
-            background: $dark;
-            bottom: 0;
-            content: '';
-            height: 1px;
-            left: 0;
-            position: absolute;
-            transition: transform 0.7s;
+        & span.t2 {
             width: 100%;
-            transform: scaleX(0);
-            transform-origin: right center;
+            text-align: center;
         }
-        &:hover:after {
-            transform: scaleX(1);
-            transform-origin: left center;
-        }
-    }
-    &__motto {
-        position: relative;
-        color: $lightest;
-        line-height: 1.5;
-        @mxin atSmall {
-            line-height: 1;
-        }
-        &:after {
-            background: $dark;
-            bottom: 0;
-            content: '';
-            height: 1px;
-            left: 0;
-            position: absolute;
-            transition: transform 0.7s;
+        & span.t3 {
             width: 100%;
-            transform: scaleX(0);
-            transform-origin: right center;
-        }
-        &:hover&:after {
-            transform: scaleX(1);
-            transform-origin: left center;
+            text-align: right;
         }
     }
-}
-
-.br {
-    display: block;
-    @mixin atSmall {
-        display: none;
-    }
-}
-
-.hide-on-mobile {
-    display: none;
-    @mixin atSmall {
-        display: inline;
-    }
-}
-
-sup {
-    transform: rotateX(180);
 }

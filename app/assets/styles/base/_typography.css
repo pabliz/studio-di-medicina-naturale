@@ -1,6 +1,31 @@
 /*IMPORTS*/
 
 @font-face {
+    font-family: "Gallient Regular";
+    src: url("./assets/fonts/Gallient-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Gosha Sans Ultralight";
+    src: url("./assets/fonts/GoshaSans-Ultralight.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Gosha Sans Regular";
+    src: url("./assets/fonts/GoshaSans-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Agrandir Tight Thin";
+    src: url("./assets/fonts/Agrandir-TightThin.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Agrandir Wide Light";
+    src: url("./assets/fonts/Agrandir-WideLight.woff") format("woff");
+}
+
+@font-face {
     font-family: 'Inconsolata';
     src: url('./assets/fonts/Inconsolata-Regular.woff2') format('woff2'), url('./assets/fonts/Inconsolata-Regular.woff') format('woff');
     font-weight: normal;
@@ -67,9 +92,11 @@ h3 {
 
 h1 {
     font-size: $huge;
-    font-family: $nmb;
-    text-transform: uppercase;
+    font-family: $gr;
+    /* text-transform: uppercase; */
     letter-spacing: 1rem;
+    font-weight: 300;
+    position: relative;
     overflow: hidden;
     & span {
         display: inline-block;
@@ -78,17 +105,13 @@ h1 {
 
 h2 {
     font-size: $big;
-    font-family: $nmb;
-    color: $dark;
-    @mixin atSmall {
-        color: $darkest;
-        -webkit-text-fill-color: transparent;
-        -webkit-text-stroke-width: 1px;
-    }
+    font-family: $gr;
+    color: $darkest;
+    overflow-x: visible;
 }
 
 h3 {
-    font-size: $mid;
+    font-size: $textBig;
     font-family: $nml;
 }
 
@@ -123,7 +146,8 @@ li {
 }
 
 p {
-    line-height: 1.5;
+    line-height: 2;
+    padding: 2.4rem 0;
 }
 
 a {

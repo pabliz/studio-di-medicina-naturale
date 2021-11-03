@@ -9,6 +9,11 @@ $fcb: "Formula Condensed Bold";
 $fcl: "Formula Condensed Light";
 $fcr: "Formula Condensed Regular";
 $sul: "Supply UltraLight";
+$awl: "Agrandir Wide Light";
+$att: "Agrandir Tight Thin";
+$gsr: "Gosha Sans Regular";
+$gsu: "Gosha Sans Ultralight";
+$gr: "Gallient Regular";
 
 /* COLORS */
 
@@ -21,13 +26,14 @@ $blue: #1f40d3;
 $lightest: #E3E5E8;
 $light: #ABAFB8;
 $dark: #525661;
-$darkest: #17191C;
+$darkest: #1F3E4D;
 
 /* SIZES */
 
-$huge: clamp(7.2rem, -0.875rem + 8.333333vw, 17rem);
-$big: clamp(3.2rem, -0.875rem + 8.333333vw, 7.2rem);
+$huge: clamp(10rem, -0.875rem + 14.333333vw, 28rem);
+$big: clamp(6.4rem, -0.875rem + 8.333333vw, 18rem);
 $mid: clamp(1.6rem, -0.875rem + 8.333333vw, 3.2rem);
+$textBig: clamp(1.4rem, -0.875rem + 8.333333vw, 2.4rem);
 $text: clamp(1.2rem, -0.875rem + 8.333333vw, 1.6rem);
 $small: clamp(1rem, -0.875rem + 8.333333vw, 1.2rem);
 $tiny: clamp(.8rem, -0.875rem + 8.333333vw, 1rem);

@@ -1,6 +1,6 @@
 img,
 video {
-    opacity: 0;
+    opacity: .8;
     width: 100%;
 }
 
@@ -13,10 +13,11 @@ svg {
     }
 }
 
-svg:not(#insta):hover {
+
+/* svg:not(#insta):hover {
     fill: $red;
 }
 
 svg#insta:hover {
     stroke: $red;
-}
+} */
