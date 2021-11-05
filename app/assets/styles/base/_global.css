@@ -23,7 +23,7 @@ body {
     /* overflow-y: scroll; */
 }
 
-.cursor {
+/* .cursor {
     display: none;
     @mixin atLarge {
         display: block;
@@ -36,7 +36,7 @@ body {
         background: transparent;
         z-index: 2;
     }
-}
+} */
 
 .hidden {
     visibility: hidden;
