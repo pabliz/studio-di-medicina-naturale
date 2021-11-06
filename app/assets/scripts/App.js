@@ -57,6 +57,7 @@ const hidePreloader = () => {
 }
 
 const init = async () => {
+    await window.scrollTo(0,0);
     // HOME INTRO ANIMATION ///////////////////////////////////////
     // PRELOADER OFF //////////////////////////////////////////////
     let tl = gsap.timeline()
@@ -66,7 +67,7 @@ const init = async () => {
         autoAlpha: 0
     })
     .from(main, {
-        background: "#17191C",
+        background: "#1F3E4D",
         delay: 1,
         duration: .3,
     })
@@ -134,23 +135,23 @@ const init = async () => {
             
             // Section titles ///////////////////////////////////////////////////////
             
-            sectionTitles.forEach(title=>{  
-                gsap.from(title, {
-                    duration: 1,
-                    xPercent: -100,
-                    autoAlpha: 0,
-                    ease: "power1.out",
-                    scrollTrigger: {
-                        trigger: title,
-                        //markers: true,
-                        start: 'top 100%',
-                        end: "bottom 60%",
-                        scrub: 3
-                        //toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
-                        // options: play pause resume reset restart complete reverse none
-                    }
-                })
-            })
+            // sectionTitles.forEach(title=>{  
+            //     gsap.from(title, {
+            //         duration: 1,
+            //         xPercent: -100,
+            //         autoAlpha: 0,
+            //         ease: "power1.out",
+            //         scrollTrigger: {
+            //             trigger: title,
+            //             //markers: true,
+            //             start: 'top 100%',
+            //             end: "bottom 60%",
+            //             scrub: 3
+            //             //toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
+            //             // options: play pause resume reset restart complete reverse none
+            //         }
+            //     })
+            // })
             // section images //////////////////////////////////////////////////////////
             
             images.forEach(img=>{  

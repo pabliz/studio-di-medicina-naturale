@@ -28,11 +28,15 @@
             width: 60%;
         }
         &__title {
+            width: 100%;
             margin: 4.8rem;
             margin-left: 0;
             font-size: $big;
             &--right {
                 margin-left: -14rem;
+            }
+            &--sx {
+                font-size: $mid;
             }
         }
         &__text {
@@ -78,7 +82,8 @@
 }
 
 section#special {
-    padding-bottom: 4.8rem;
+    margin-top: 4.8rem;
+    padding: 4.8rem auto;
 display: flex;
 width: 100%;
 justify-content: center;

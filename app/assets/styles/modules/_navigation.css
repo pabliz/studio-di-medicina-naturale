@@ -22,8 +22,25 @@ nav {
                 display: inline;
                 padding: 2.4rem;
                 &__link {
+                    position: relative;
                     color: $darkest;
                     font-size: $textBig;
+                    &:after {
+                        background: $dark;
+                        bottom: 0;
+                        content: '';
+                        height: 1px;
+                        left: 0;
+                        position: absolute;
+                        transition: transform 0.7s;
+                        width: 100%;
+                        transform: scaleX(0);
+                        transform-origin: right center;
+                    }
+                    &:hover:after {
+                        transform: scaleX(1);
+                        transform-origin: left center;
+                    }
                 }
             }
         }
@@ -40,3 +57,14 @@ nav {
         }
     }
 }
+
+#logosvg{
+    transform: scale(1);
+    transition: all .3s;
+    &:hover {
+    stroke: $lightest;
+    transform: scale(0.95);
+    /* & path:hover {
+    stroke: $light;
+} */
+}}
