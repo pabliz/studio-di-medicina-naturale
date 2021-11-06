@@ -12,14 +12,17 @@
     &__title {
         margin: auto;
         & span.t1 {
+            visibility: hidden;
             width: 100%;
             text-align: left;
         }
         & span.t2 {
+            visibility: hidden;
             width: 100%;
             text-align: center;
         }
         & span.t3 {
+            visibility: hidden;
             width: 100%;
             text-align: right;
         }

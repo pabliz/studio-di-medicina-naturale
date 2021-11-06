@@ -1,4 +1,5 @@
 .hero {
+    visibility: hidden;
     position: absolute;
     display: flex;
     align-items: flex-end;

@@ -201,3 +201,10 @@ a {
     font-size: $mid;
     font-family: nmb;
 }
+
+.br {
+    display: block;
+    @mixin atSmall {
+        display: none;
+    }
+}

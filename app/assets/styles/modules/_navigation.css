@@ -1,3 +1,7 @@
+nav {
+    visibility: hidden;
+}
+
 .nav {
     z-index: 3;
     width: calc(100vw - 4.8rem);
