@@ -196,7 +196,7 @@ const init = async () => {
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: postu,
-                    markers: true,
+                    //markers: true,
                     start: 'top 30%',
                     end: "bottom -50%",
                     scrub: true
@@ -210,7 +210,7 @@ const init = async () => {
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: pinda,
-                    markers: true,
+                    //markers: true,
                     start: 'top 30%',
                     end: "bottom -50%",
                     scrub: true
