@@ -16,9 +16,9 @@ if (module.hot) {
 //     dom: document.getElementById('container')
 // });
 // PRELOADER
-
-const preloader = document.querySelector(".preloader");
+const body = document.querySelector("body");
 const main = document.querySelector("main");
+const preloader = document.querySelector(".preloader");
 
 
 // window.addEventListener("load", () => {
@@ -48,13 +48,11 @@ let t3 = document.querySelector(".t3")
 let hero = document.querySelector(".hero")
 let nav = document.querySelector("nav")
 let heroImg = document.querySelector(".hero__img")
-let sectionTitles = document.querySelectorAll("h2.section__info__title")
+// let sectionTitles = document.querySelectorAll("h2.section__info__title")
 let images = document.querySelectorAll("img.img")
 let sectionTexts = document.querySelectorAll(".section__info")
-
-const hidePreloader = () => {
-    gsap
-}
+let postu = document.querySelector(".posturologia")
+let pinda = document.querySelector(".pindasweda")
 
 const init = async () => {
     await window.scrollTo(0,0);
@@ -113,8 +111,8 @@ const init = async () => {
                 autoAlpha: 0,
             }, '-=.7')
         // END INTRO //////////////////////////////////////////////////////////////////
-
-            // Hero Image ////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+            // Hero Image ///////////////////////////////////////////////////////////
             gsap.to(heroImg, {
                 duration: 1,
                 rotate: 90,
@@ -156,9 +154,10 @@ const init = async () => {
             
             images.forEach(img=>{  
                 gsap.from(img, {
-                    duration: 1.5,
+                    duration: .5,
                     y: 350,
-                    scale: 1.1,
+                    scaleX: 1.1,
+                    scaleY: 0,
                     autoAlpha: 0,
                     ease: "power1.out",
                     scrollTrigger: {
@@ -189,6 +188,35 @@ const init = async () => {
                         // options: play pause resume reset restart complete reverse none
                     }
                 })
+            })
+
+            gsap.to(body, {
+                duration: 1,
+                backgroundColor: '#D3CDBF',
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: postu,
+                    markers: true,
+                    start: 'top 30%',
+                    end: "bottom -50%",
+                    scrub: true
+                    // toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
+                    // // options: play pause resume reset restart complete reverse none
+                }
+            })
+            gsap.to(body, {
+                duration: 1,
+                backgroundColor: '#E3E5E8',
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: pinda,
+                    markers: true,
+                    start: 'top 30%',
+                    end: "bottom -50%",
+                    scrub: true
+                    // toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
+                    // // options: play pause resume reset restart complete reverse none
+                }
             })
 }
 
