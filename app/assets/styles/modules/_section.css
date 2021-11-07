@@ -94,10 +94,9 @@ align-items: center;
     background: $darkest;
     color: $lightest;
     width: 100vw;
-    /* min-height: 90vh; */
-    margin: 4.8rem;
+    margin-top: 4.8rem;
+    margin-left: 0;
     margin-bottom: 0;
-    /* padding: 4.8rem 2.4rem; */
     padding-top: 9.6rem;
     display: flex;
     justify-content: space-evenly;
