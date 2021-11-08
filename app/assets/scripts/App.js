@@ -148,7 +148,6 @@ const init = async () => {
                 gsap.from(img, {
                     duration: .5,
                     y: 350,
-                    scaleX: 1.1,
                     scaleY: 0,
                     autoAlpha: 0,
                     ease: "power1.out",
@@ -168,7 +167,6 @@ const init = async () => {
                 gsap.from(text, {
                     duration: .5,
                     y: 350,
-                    scale: 1.1,
                     autoAlpha: 0,
                     transformOrigin: 'bottom 50%',
                     ease: "power1.out",
@@ -203,7 +201,7 @@ const init = async () => {
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: pinda,
-                    //markers: true,
+                    markers: false,
                     start: 'top 30%',
                     end: "bottom -50%",
                     scrub: true

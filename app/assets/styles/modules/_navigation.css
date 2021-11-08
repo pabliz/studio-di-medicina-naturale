@@ -4,7 +4,7 @@ nav {
 
 .nav {
     z-index: 3;
-    width: calc(100vw - 4.8rem);
+    width: 100%;
     margin: 0 auto;
     padding-top: 2.4rem;
     position: fixed;
