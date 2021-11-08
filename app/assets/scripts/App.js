@@ -5,11 +5,13 @@ import "../styles/styles.css";
 // import Scroll from "./modules/scroll";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger)
 
 if (module.hot) {
     module.hot.accept();
 }
+
+gsap.registerPlugin(ScrollTrigger)
+
 
 // new Scroll();
 // new Canvas({
@@ -209,6 +211,27 @@ const init = async () => {
                     // // options: play pause resume reset restart complete reverse none
                 }
             })
+
+if(!isMobile){
+let prevScrollPos = window.pageYOffset;
+window.onscroll = function() {
+let currentScrollPos = window.pageYOffset;
+console.log(currentScrollPos, prevScrollPos);
+  if (prevScrollPos < currentScrollPos || prevScrollPos > currentScrollPos) {
+    gsap.timeline().to(nav, {
+        y: -20,
+        opacity: 0,
+        duration: .3,
+        ease: 'Power1.out'
+    })
+    .to(nav, {
+        delay: .3,
+        y: 0,
+        opacity: 1
+    })
+  }
+  prevScrollPos = currentScrollPos;
+}}
 }
 
 window.addEventListener('load', init)

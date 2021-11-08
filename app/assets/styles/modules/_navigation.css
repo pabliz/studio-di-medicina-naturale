@@ -1,21 +1,25 @@
 nav {
-    visibility: visible;
+    visibility: hidden;
 }
 
 .nav {
+    background: $lightestOver;
     z-index: 3;
     width: 100%;
-    margin: 0 auto;
+    margin: 0;
     padding-top: 2.4rem;
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     display: flex;
     justify-content: space-between;
+    &__logo {
+        margin-left: 2.4rem;
+    }
     &__menu {
         display: none;
-        margin-left: auto;
+        /* margin-left: auto; */
+        padding-right: 2.4;
         @mixin atMedium {
             display: block;
         }
@@ -63,10 +67,10 @@ nav {
     &__burgermenu {
         display: block;
         margin-left: auto;
-        margin-top: 2.4rem;
+        margin-top: 1.2rem;
         margin-right: 2.4rem;
         width: 3.2rem;
-        z-index: 9999;
+        z-index: 3;
         transition: all .5s ease-in-out;
         @mixin atMedium {
             display: none;
@@ -82,7 +86,7 @@ nav {
             
         }
         &__area {
-            z-index: 9000;
+            z-index: 2;
             background: $lightestOver;
             display: flex;
             justify-content: center;

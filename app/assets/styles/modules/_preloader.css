@@ -11,7 +11,7 @@
     text-align: center;
     color: $dark;
     background: $darkest;
-    z-index: 2;
+    z-index: 4;
     &__text {
         width: auto;
         &__paragraph {
