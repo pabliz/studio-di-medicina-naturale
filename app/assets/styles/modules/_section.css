@@ -1,49 +1,64 @@
 .section {
-    width: 100vw;
-    /* min-height: 90vh; */
-    margin: 4.8rem;
-    padding: 4.8rem 2.4rem;
-    padding-top: 9.6rem;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    &:nth-of-type(2n) {
-        padding-top: 0;
-        margin-top: 0;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    @mixin atTablet {
+        width: 80vw;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
         flex-direction: row-reverse;
+        justify-content: space-evenly;
+        align-items: center;
+        &:nth-of-type(2n) {
+            flex-direction: row;
+        }
+    }
+    &__separator {
+        min-height: 16rem;
     }
     &__img {
-        width: 40%;
-        padding-right: 2.4rem;
-        margin-right: 2.4rem;
+        display: block;
+        width: 100%;
+        /* margin: 0;
+        padding: 0; */
         & img {
             width: 100%;
         }
+        @mixin atTablet {
+            width: 50%;
+        /* padding-right: 2.4rem;
+        margin-right: 2.4rem; */
+        }
     }
     &__info {
-        width: 40%;
-        margin-left: 4.8rem;
+        width: 100%;
+        display: block;
+        padding-left: 2.4rem;
+        @mixin atTablet {
+            width: 50%;
         z-index: 1;
         &:nth-of-type(2n) {
-            width: 60%;
+            width: 50%;
+        }
         }
         &__title {
             width: 100%;
-            margin: 4.8rem;
-            margin-left: 0;
-            font-size: $big;
-            &--right {
-                margin-left: -14rem;
-            }
-            &--sx {
-                font-size: $mid;
+            padding-top: 2.4rem;
+            font-size: $mid;
+            @mixin atTablet {
+                padding-top: 0;
+                font-size: $big;
             }
         }
         &__text {
             width: 80%;
+            
         }
         &__list {
             width: 90%;
+            
             padding: 2.4rem 0;
             list-style: inside;
             line-height: 2;
@@ -58,6 +73,7 @@
     justify-content: space-evenly;
     margin: 0 auto;
     align-items: center;
+    padding: 4.8rem;
     &:nth-of-type(2n) {
         padding-top: 0;
         margin-top: 0;
@@ -65,16 +81,19 @@
     }
         &__info {
             width: 50%;
+            padding: 2.4rem;
             &__text {
                 width: 70%;
             }
         }
         &__img {
-            width: 40%;
-            padding-right: 2.4rem;
-            margin-right: 2.4rem;
+            width: 50%;
+            padding: 2.4rem;
             & img {
                 width: 100%;
+                @mixin atTablet {
+                    width: 80%;
+                }
             }
         }
     }
@@ -82,8 +101,8 @@
 }
 
 section#special {
-    margin-top: 4.8rem;
-    padding: 4.8rem auto;
+    /* margin-top: 4.8rem;
+    padding: 4.8rem auto; */
 display: flex;
 width: 100%;
 justify-content: center;
@@ -94,10 +113,7 @@ align-items: center;
     background: $darkest;
     color: $lightest;
     width: 100vw;
-    margin-top: 4.8rem;
-    margin-left: 0;
-    margin-bottom: 0;
-    padding-top: 9.6rem;
+    padding: 4.8rem;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;

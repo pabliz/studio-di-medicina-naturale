@@ -1,5 +1,5 @@
 nav {
-    visibility: hidden;
+    visibility: visible;
 }
 
 .nav {
@@ -14,7 +14,11 @@ nav {
     display: flex;
     justify-content: space-between;
     &__menu {
+        display: none;
         margin-left: auto;
+        @mixin atMedium {
+            display: block;
+        }
         &__list {
             display: flex;
             list-style: none;
@@ -52,6 +56,73 @@ nav {
                 display: none;
                 &:first-of-type {
                     display: flex;
+                }
+            }
+        }
+    }
+    &__burgermenu {
+        display: block;
+        margin-left: auto;
+        margin-top: 2.4rem;
+        margin-right: 2.4rem;
+        width: 3.2rem;
+        z-index: 9999;
+        transition: all .5s ease-in-out;
+        @mixin atMedium {
+            display: none;
+        }
+        &:hover {
+            transform: translateX(0.8rem) rotate(-90deg);
+        }
+        &__line {
+            margin: 0.6rem;
+            width: 3.2rem;
+            height: .2rem;
+            background: $darkest;
+            
+        }
+        &__area {
+            z-index: 9000;
+            background: $lightestOver;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            @mixin atSmall {
+                width: 50%;
+            }
+            @mixin atMedium {
+                display: none;
+            }
+        }
+        &__list {
+            list-style: none;
+            &__item {
+                padding: 4.8rem;
+                &__link {
+                    position: relative;
+                    color: $darkest;
+                    font-size: $textBig;
+                    &:after {
+                        background: $dark;
+                        bottom: 0;
+                        content: '';
+                        height: 1px;
+                        left: 0;
+                        position: absolute;
+                        transition: transform 0.7s;
+                        width: 100%;
+                        transform: scaleX(0);
+                        transform-origin: right center;
+                    }
+                    &:hover:after {
+                        transform: scaleX(1);
+                        transform-origin: left center;
+                    }
                 }
             }
         }

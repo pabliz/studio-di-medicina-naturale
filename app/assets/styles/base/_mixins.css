@@ -4,8 +4,14 @@
     }
 }
 
+@define-mixin atTablet {
+    @media (min-width: 1000px) {
+        @mixin-content;
+    }
+}
+
 @define-mixin atMedium {
-    @media (min-width: 1024px) {
+    @media (min-width: 1200px) {
         @mixin-content;
     }
 }

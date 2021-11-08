@@ -41,12 +41,21 @@ const preloader = document.querySelector(".preloader");
 // SWAPSPAN
 // new SwapSpan();
 
-
+let width = window.innerWidth
+let height = window.innerHeight
 let t1 = document.querySelector(".t1")
 let t2 = document.querySelector(".t2")
 let t3 = document.querySelector(".t3")
 let hero = document.querySelector(".hero")
 let nav = document.querySelector("nav")
+let burger = document.querySelector(".nav__burgermenu")
+let burgerLine1 = document.querySelector(".nav__burgermenu__line:first-of-type")
+let burgerLine2 = document.querySelector(".nav__burgermenu__line:last-of-type")
+let menuArea = false;
+let menu = document.querySelector(".nav__burgermenu__area")
+let isMobile = false
+if (width<=768) {isMobile = true} else { isMobile = false}
+let burgermenuLinks = document.querySelectorAll('.nav__burgermenu__list__item__link')
 let heroImg = document.querySelector(".hero__img")
 // let sectionTitles = document.querySelectorAll("h2.section__info__title")
 let images = document.querySelectorAll("img.img")
@@ -55,6 +64,8 @@ let postu = document.querySelector(".posturologia")
 let pinda = document.querySelector(".pindasweda")
 
 const init = async () => {
+    width = window.innerWidth
+    height = window.innerHeight
     await window.scrollTo(0,0);
     // HOME INTRO ANIMATION ///////////////////////////////////////
     // PRELOADER OFF //////////////////////////////////////////////
@@ -131,25 +142,6 @@ const init = async () => {
                 }
             })
             
-            // Section titles ///////////////////////////////////////////////////////
-            
-            // sectionTitles.forEach(title=>{  
-            //     gsap.from(title, {
-            //         duration: 1,
-            //         xPercent: -100,
-            //         autoAlpha: 0,
-            //         ease: "power1.out",
-            //         scrollTrigger: {
-            //             trigger: title,
-            //             //markers: true,
-            //             start: 'top 100%',
-            //             end: "bottom 60%",
-            //             scrub: 3
-            //             //toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
-            //             // options: play pause resume reset restart complete reverse none
-            //         }
-            //     })
-            // })
             // section images //////////////////////////////////////////////////////////
             
             images.forEach(img=>{  
@@ -165,7 +157,7 @@ const init = async () => {
                         //markers: true,
                         start: 'top 110%',
                         end: "bottom 25%",
-                        toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
+                        toggleActions:"restart pause resume reverse" // onEnter onLeave onEnterBack onLeaveBack
                         // options: play pause resume reset restart complete reverse none
                     }
                 })
@@ -174,17 +166,18 @@ const init = async () => {
             
             sectionTexts.forEach(text=>{  
                 gsap.from(text, {
-                    duration: 1,
+                    duration: .5,
                     y: 350,
                     scale: 1.1,
                     autoAlpha: 0,
+                    transformOrigin: 'bottom 50%',
                     ease: "power1.out",
                     scrollTrigger: {
                         trigger: text,
                         //markers: true,
                         start: 'top 110%',
                         end: "bottom 25%",
-                        toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
+                        toggleActions:"restart pause resume reverse" // onEnter onLeave onEnterBack onLeaveBack
                         // options: play pause resume reset restart complete reverse none
                     }
                 })
@@ -221,3 +214,61 @@ const init = async () => {
 }
 
 window.addEventListener('load', init)
+
+const closeMenu = () => {
+    gsap.to(burgerLine1, {
+        y: '0',
+        rotate: '0'
+    })
+    gsap.to(burgerLine2, {
+        y: '0',
+        rotate: '0'
+    })
+    gsap.to(menu, {
+        duration: 1,
+        x: 0
+    })
+    menuArea = false;
+}
+
+const burgerClick =()=>{
+    if(menuArea === false) {
+        gsap.to(burgerLine1, {
+            y: '0.4rem',
+            rotate: '-45deg'
+        })
+        gsap.to(burgerLine2, {
+            y: '-0.4rem',
+            rotate: '45deg'
+        })
+        if(isMobile){
+            gsap.to(menu, {
+                duration: 1,
+                x: '-100%'
+            })
+        } else {
+            gsap.to(menu, {
+                duration: 1,
+                x: '-200%'
+            })
+        }
+        menuArea = true;
+        return
+    }
+    if(menuArea === true) {
+        closeMenu()
+    }
+}
+
+burger.addEventListener('click', burgerClick)
+
+burgermenuLinks.forEach(link=>{
+    // let anchor = link.attributes[0].value;
+    // console.log(anchor);
+    link.addEventListener('click', ()=>{
+            closeMenu()
+            menuArea = false
+        
+        
+    })
+})
