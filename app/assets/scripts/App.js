@@ -335,12 +335,12 @@ const homeVisible = () => {
                 y: 0
             })
         })
-        isBlog = false
     }
     sectionsToHide.forEach(section => {
         section.classList.remove("dNone")
     })
-    blogSection.classList.add('dNone')
+    blogSection.classList.add("dNone")
+    isBlog = false
 }
 
 menuLinks.forEach(link=>{
@@ -350,17 +350,18 @@ menuLinks.forEach(link=>{
 })
 
 const blogOpens = (e) => {
-    e.preventDefault()
     isBlog = true
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     sectionsToHide.forEach(section => {
         section.classList.add("dNone")
     })
-    blogSection.classList.remove('dNone')
-    blogAnim.forEach(el=>{
-        gsap.to(el, {
-            y: -window.innerHeight
+    blogSection.classList.remove("dNone")
+        blogAnim.forEach(el=>{
+            gsap.to(el, {
+                y: -window.innerHeight
+            })
         })
-    })
+    
 }
 
 blogLink.addEventListener('click', blogOpens)
