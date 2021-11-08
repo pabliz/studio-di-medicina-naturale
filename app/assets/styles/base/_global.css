@@ -75,3 +75,7 @@ body::-webkit-scrollbar {
 .opacity1 {
     opacity: 1;
 }
+
+.dNone {
+    display: none!important;
+}

@@ -57,6 +57,8 @@ let menuArea = false;
 let menu = document.querySelector(".nav__burgermenu__area")
 let isMobile = false
 if (width<=768) {isMobile = true} else { isMobile = false}
+let blogLink = document.querySelector('#blog-link')
+let menuLinks = document.querySelectorAll('.menu-links')
 let burgermenuLinks = document.querySelectorAll('.nav__burgermenu__list__item__link')
 let heroImg = document.querySelector(".hero__img")
 // let sectionTitles = document.querySelectorAll("h2.section__info__title")
@@ -64,6 +66,12 @@ let images = document.querySelectorAll("img.img")
 let sectionTexts = document.querySelectorAll(".section__info")
 let postu = document.querySelector(".posturologia")
 let pinda = document.querySelector(".pindasweda")
+let sectionsToHide = document.querySelectorAll(".hide-on-blog")
+let specials = document.querySelectorAll(".section__special")
+let specialsTitle = document.querySelector("#special")
+let blogSection = document.querySelector(".blog")
+let blogAnim = document.querySelectorAll(".blog-anim")
+let isBlog = false
 
 const init = async () => {
     width = window.innerWidth
@@ -212,11 +220,39 @@ const init = async () => {
                 }
             })
 
+            gsap.to(nav, {
+                duration: 1,
+                backgroundColor: '#D3CDBF',
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: postu,
+                    //markers: true,
+                    start: 'top 30%',
+                    end: "bottom -50%",
+                    scrub: true
+                    // toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
+                    // // options: play pause resume reset restart complete reverse none
+                }
+            })
+            gsap.to(nav, {
+                duration: 1,
+                backgroundColor: '#E3E5E8',
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: pinda,
+                    markers: false,
+                    start: 'top 30%',
+                    end: "bottom -50%",
+                    scrub: true
+                    // toggleActions:"restart pause resume reset" // onEnter onLeave onEnterBack onLeaveBack
+                    // // options: play pause resume reset restart complete reverse none
+                }
+            })
+
 if(!isMobile){
 let prevScrollPos = window.pageYOffset;
 window.onscroll = function() {
 let currentScrollPos = window.pageYOffset;
-console.log(currentScrollPos, prevScrollPos);
   if (prevScrollPos < currentScrollPos || prevScrollPos > currentScrollPos) {
     gsap.timeline().to(nav, {
         y: -20,
@@ -284,8 +320,6 @@ const burgerClick =()=>{
 burger.addEventListener('click', burgerClick)
 
 burgermenuLinks.forEach(link=>{
-    // let anchor = link.attributes[0].value;
-    // console.log(anchor);
     link.addEventListener('click', ()=>{
             closeMenu()
             menuArea = false
@@ -293,3 +327,40 @@ burgermenuLinks.forEach(link=>{
         
     })
 })
+
+const homeVisible = () => {
+    if(isBlog) {
+        blogAnim.forEach(el=>{
+            gsap.to(el, {
+                y: 0
+            })
+        })
+        isBlog = false
+    }
+    sectionsToHide.forEach(section => {
+        section.classList.remove("dNone")
+    })
+    blogSection.classList.add('dNone')
+}
+
+menuLinks.forEach(link=>{
+    link.addEventListener('click',() => {
+        homeVisible()
+    })
+})
+
+const blogOpens = (e) => {
+    e.preventDefault()
+    isBlog = true
+    sectionsToHide.forEach(section => {
+        section.classList.add("dNone")
+    })
+    blogSection.classList.remove('dNone')
+    blogAnim.forEach(el=>{
+        gsap.to(el, {
+            y: -window.innerHeight
+        })
+    })
+}
+
+blogLink.addEventListener('click', blogOpens)
