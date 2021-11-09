@@ -58,8 +58,9 @@ let menu = document.querySelector(".nav__burgermenu__area")
 let isMobile = false
 if (width<=768) {isMobile = true} else { isMobile = false}
 let blogLink = document.querySelector('#blog-link')
+let burgerBlogLink = document.querySelector('#burger-blog-link')
 let menuLinks = document.querySelectorAll('.menu-links')
-let burgermenuLinks = document.querySelectorAll('.nav__burgermenu__list__item__link')
+let burgermenuLinks = document.querySelectorAll('.burgerlink')
 let heroImg = document.querySelector(".hero__img")
 // let sectionTitles = document.querySelectorAll("h2.section__info__title")
 let images = document.querySelectorAll("img.img")
@@ -67,8 +68,6 @@ let sectionTexts = document.querySelectorAll(".section__info")
 let postu = document.querySelector(".posturologia")
 let pinda = document.querySelector(".pindasweda")
 let sectionsToHide = document.querySelectorAll(".hide-on-blog")
-let specials = document.querySelectorAll(".section__special")
-let specialsTitle = document.querySelector("#special")
 let blogSection = document.querySelector(".blog")
 let blogAnim = document.querySelectorAll(".blog-anim")
 let isBlog = false
@@ -323,8 +322,6 @@ burgermenuLinks.forEach(link=>{
     link.addEventListener('click', ()=>{
             closeMenu()
             menuArea = false
-        
-        
     })
 })
 
@@ -365,3 +362,26 @@ const blogOpens = (e) => {
 }
 
 blogLink.addEventListener('click', blogOpens)
+
+const blogOpensOnMobile = (e) => {
+    
+    console.log(menuArea, isBlog);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    sectionsToHide.forEach(section => {
+        section.classList.add("dNone")
+    })
+    blogSection.classList.remove("dNone")
+        blogAnim.forEach(el=>{
+            gsap.to(el, {
+                y: -window.innerHeight
+            })
+        })
+    
+}
+
+burgerBlogLink.addEventListener('click',async ()=> {
+    await closeMenu()
+    menuArea = false
+    isBlog = true
+    blogOpensOnMobile()
+})
