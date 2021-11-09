@@ -18,10 +18,17 @@ gsap.registerPlugin(ScrollTrigger)
 //     dom: document.getElementById('container')
 // });
 // PRELOADER
-const body = document.querySelector("body");
+const body = document.body;
 const main = document.querySelector("main");
 const preloader = document.querySelector(".preloader");
 
+// // // // // // create an Observer instance
+// // // // // const resizeObserver = new ResizeObserver(entries => 
+// // // // //     console.log('Body height changed:', entries[0].target.clientHeight)
+// // // // //   )
+  
+// // // // //   // start observing a DOM node
+// // // // //   resizeObserver.observe(body)
 
 // window.addEventListener("load", () => {
 
@@ -62,13 +69,12 @@ let burgerBlogLink = document.querySelector('#burger-blog-link')
 let menuLinks = document.querySelectorAll('.menu-links')
 let burgermenuLinks = document.querySelectorAll('.burgerlink')
 let heroImg = document.querySelector(".hero__img")
-// let sectionTitles = document.querySelectorAll("h2.section__info__title")
 let images = document.querySelectorAll("img.img")
 let sectionTexts = document.querySelectorAll(".section__info")
 let postu = document.querySelector(".posturologia")
 let pinda = document.querySelector(".pindasweda")
 let sectionsToHide = document.querySelectorAll(".hide-on-blog")
-let blogSection = document.querySelector(".blog")
+let blogSections = document.querySelectorAll(".blog")
 let blogAnim = document.querySelectorAll(".blog-anim")
 let isBlog = false
 
@@ -82,7 +88,8 @@ const init = async () => {
     tl.to(preloader, {
         delay: 2,
         duration: .1,
-        autoAlpha: 0
+        autoAlpha: 0,
+        onComplete: preloader.classList.add("dNone")
     })
     .from(main, {
         background: "#1F3E4D",
@@ -328,15 +335,20 @@ burgermenuLinks.forEach(link=>{
 const homeVisible = () => {
     if(isBlog) {
         blogAnim.forEach(el=>{
+            el.classList.remove("dNone")
             gsap.to(el, {
-                y: 0
+                autoAlpha: 1,
+                scaleY: 1,
+                duration: 1
             })
         })
     }
     sectionsToHide.forEach(section => {
         section.classList.remove("dNone")
     })
-    blogSection.classList.add("dNone")
+    blogSections.forEach(section=>{
+        section.classList.add("dNone")
+    })
     isBlog = false
 }
 
@@ -352,31 +364,38 @@ const blogOpens = (e) => {
     sectionsToHide.forEach(section => {
         section.classList.add("dNone")
     })
-    blogSection.classList.remove("dNone")
+    blogSections.forEach(section=>{
+        section.classList.remove("dNone")
         blogAnim.forEach(el=>{
             gsap.to(el, {
-                y: -window.innerHeight
+                autoAlpha: 0,
+                scaleY: 0,
+                duration: 1,
+                onComplete: el.classList.add("dNone")
             })
         })
-    
+    })
 }
 
 blogLink.addEventListener('click', blogOpens)
 
 const blogOpensOnMobile = (e) => {
-    
-    console.log(menuArea, isBlog);
+    isBlog = true
     window.scrollTo({ top: 0, behavior: 'smooth' });
     sectionsToHide.forEach(section => {
         section.classList.add("dNone")
     })
-    blogSection.classList.remove("dNone")
+    blogSections.forEach(section => {
+        section.classList.remove("dNone")
         blogAnim.forEach(el=>{
             gsap.to(el, {
-                y: -window.innerHeight
+                autoAlpha: 0,
+                scaleY: 0,
+                duration: 1,
+                onComplete: el.classList.add("dNone")
             })
         })
-    
+    })
 }
 
 burgerBlogLink.addEventListener('click',async ()=> {
