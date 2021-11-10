@@ -332,37 +332,72 @@ burgermenuLinks.forEach(link=>{
     })
 })
 
-const homeVisible = () => {
-    if(isBlog) {
-        blogAnim.forEach(el=>{
-            el.classList.remove("dNone")
-            gsap.to(el, {
-                autoAlpha: 1,
-                scaleY: 1,
-                duration: 1
+const homeVisible = async () => {
+    
+        await window.scrollTo({ top: 0, behavior: 'smooth' });
+            blogSections.forEach(section=>{
+                gsap.to(section, {
+                    autoAlpha: 0,
+                    scaleY: 0,
+                    duration: 1,
+                    onComplete: section.classList.add("dNone")
+                })
             })
-        })
-    }
-    sectionsToHide.forEach(section => {
-        section.classList.remove("dNone")
-    })
-    blogSections.forEach(section=>{
-        section.classList.add("dNone")
-    })
-    isBlog = false
+            blogAnim.forEach(el=>{
+                el.classList.remove("dNone")
+                gsap.to(el, {
+                    autoAlpha: 1,
+                    scaleY: 1,
+                    duration: 1
+                })
+            })
+            sectionsToHide.forEach(section => {
+                section.classList.remove("dNone")
+                gsap.to(section, {
+                    autoAlpha: 1,
+                    scaleY: 1,
+                    duration: 1
+                })
+            })
+        isBlog = false
+    
 }
 
 menuLinks.forEach(link=>{
-    link.addEventListener('click',() => {
+    link.addEventListener('mousedown',() => {
+        if(isBlog) {
         homeVisible()
+        } else return
     })
 })
 
 const blogOpens = (e) => {
     isBlog = true
+    blogSections.forEach(section=>{
+        section.classList.remove("dNone")
+        gsap.timeline().to(preloader, {
+            duration: .2,
+            autoAlpha: 1
+        })
+        .to(preloader, {
+            delay: 1,
+            autoAlpha: 0
+        })
+        .to(section, {
+                autoAlpha: 1,
+                scaleY: 1,
+                duration: .5
+            })
+        
+    })
     window.scrollTo({ top: 0, behavior: 'smooth' });
     sectionsToHide.forEach(section => {
-    section.classList.add("dNone")
+        gsap.to(section, {
+        autoAlpha: 0,
+        scaleY: 0,
+        duration: 1,
+        onComplete: section.classList.add("dNone")
+        })
     })
     blogAnim.forEach(el=>{
         gsap.to(el, {
@@ -372,15 +407,6 @@ const blogOpens = (e) => {
             onComplete: el.classList.add("dNone")
         })
     })
-    blogSections.forEach(section=>{
-        section.classList.remove("dNone")
-            gsap.to(section, {
-                autoAlpha: 1,
-                scaleY: 1,
-                duration: 1
-            })
-        
-    })
 }
 
 blogLink.addEventListener('click', blogOpens)
@@ -388,6 +414,5 @@ blogLink.addEventListener('click', blogOpens)
 burgerBlogLink.addEventListener('click',async ()=> {
     await closeMenu()
     menuArea = false
-    isBlog = true
     blogOpens()
 })
