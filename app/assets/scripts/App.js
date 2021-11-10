@@ -89,7 +89,7 @@ const init = async () => {
         delay: 2,
         duration: .1,
         autoAlpha: 0,
-        onComplete: preloader.classList.add("dNone")
+        // onComplete: preloader.classList.add("dNone")
     })
     .from(main, {
         background: "#1F3E4D",
@@ -362,45 +362,32 @@ const blogOpens = (e) => {
     isBlog = true
     window.scrollTo({ top: 0, behavior: 'smooth' });
     sectionsToHide.forEach(section => {
-        section.classList.add("dNone")
+    section.classList.add("dNone")
+    })
+    blogAnim.forEach(el=>{
+        gsap.to(el, {
+            autoAlpha: 0,
+            scaleY: 0,
+            duration: 1,
+            onComplete: el.classList.add("dNone")
+        })
     })
     blogSections.forEach(section=>{
         section.classList.remove("dNone")
-        blogAnim.forEach(el=>{
-            gsap.to(el, {
-                autoAlpha: 0,
-                scaleY: 0,
-                duration: 1,
-                onComplete: el.classList.add("dNone")
+            gsap.to(section, {
+                autoAlpha: 1,
+                scaleY: 1,
+                duration: 1
             })
-        })
+        
     })
 }
 
 blogLink.addEventListener('click', blogOpens)
 
-const blogOpensOnMobile = (e) => {
-    isBlog = true
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    sectionsToHide.forEach(section => {
-        section.classList.add("dNone")
-    })
-    blogSections.forEach(section => {
-        section.classList.remove("dNone")
-        blogAnim.forEach(el=>{
-            gsap.to(el, {
-                autoAlpha: 0,
-                scaleY: 0,
-                duration: 1,
-                onComplete: el.classList.add("dNone")
-            })
-        })
-    })
-}
-
 burgerBlogLink.addEventListener('click',async ()=> {
     await closeMenu()
     menuArea = false
     isBlog = true
-    blogOpensOnMobile()
+    blogOpens()
 })
