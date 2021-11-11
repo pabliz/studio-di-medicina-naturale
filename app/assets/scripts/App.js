@@ -77,6 +77,10 @@ let sectionsToHide = document.querySelectorAll(".hide-on-blog")
 let blogSections = document.querySelectorAll(".blog")
 let blogAnim = document.querySelectorAll(".blog-anim")
 let isBlog = false
+let osteo = document.querySelector("#osteopatia")
+
+
+console.log(osteo.getBoundingClientRect().top);
 
 const init = async () => {
     width = window.innerWidth
@@ -87,9 +91,10 @@ const init = async () => {
     let tl = gsap.timeline()
     tl.to(preloader, {
         delay: 2,
-        duration: .1,
+        duration: .3,
         autoAlpha: 0,
-        // onComplete: preloader.classList.add("dNone")
+        scaleY: 0,
+         ease: 'Power1.out'
     })
     .from(main, {
         background: "#1F3E4D",
@@ -158,6 +163,8 @@ const init = async () => {
                 }
             })
             
+
+          if(!isMobile) {  
             // section images //////////////////////////////////////////////////////////
             
             images.forEach(img=>{  
@@ -196,7 +203,7 @@ const init = async () => {
                     }
                 })
             })
-
+        }
             gsap.to(body, {
                 duration: 1,
                 backgroundColor: '#D3CDBF',
@@ -326,9 +333,14 @@ const burgerClick =()=>{
 burger.addEventListener('click', burgerClick)
 
 burgermenuLinks.forEach(link=>{
-    link.addEventListener('click', ()=>{
+    link.addEventListener('click', (e)=>{
+        console.log(e.target);
             closeMenu()
             menuArea = false
+            if(isBlog){
+                isBlog = false
+                homeVisible()
+            }
     })
 })
 
@@ -373,15 +385,21 @@ menuLinks.forEach(link=>{
 
 const blogOpens = (e) => {
     isBlog = true
+    window.location.hash = '#articoli'
     blogSections.forEach(section=>{
         section.classList.remove("dNone")
         gsap.timeline().to(preloader, {
             duration: .2,
-            autoAlpha: 1
+            autoAlpha: 1,
+            scaleY: 1,
+            ease: 'Power1.out'
         })
         .to(preloader, {
             delay: 1,
-            autoAlpha: 0
+            autoAlpha: 0,
+            scaleY: 0,
+            ease: 'Power1.out'
+            
         })
         .to(section, {
                 autoAlpha: 1,
