@@ -18,6 +18,7 @@
         &__paragraph {
             font-size: $big;
             font-family: $gr;
+            position: relative;
             &:after {
                 background: $lightest;
                 bottom: 30%;
@@ -29,33 +30,38 @@
                 width: 100%;
                 transform: scaleX(0);
                 transform-origin: left center;
-                animation-duration: 5s;
+                animation-duration: 2s;
                 animation-name: loading;
                 animation-iteration-count: infinite;
             }
         }
     }
     &__text__paragraph__loading {
+        text-align: center;
         color: $light;
         font-size: $mid;
         font-family: $nml;
-        margin-bottom: 4.8rem;
+        /* margin-bottom: 4.8rem; */
+    }
+    & svg {
+        transform: translateX(1rem);
     }
 }
 
-@keyframes loading {
+/* @keyframes loading {
     from {
         transform: scaleX(0);
     }
     to {
         transform: scaleX(1);
     }
-}
+} */
 
 .dot {
     margin-right: -.35rem;
     animation-name: hangin;
     animation-duration: .5s;
+    animation-delay: .33s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     &:first-of-type {
