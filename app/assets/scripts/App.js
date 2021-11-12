@@ -77,15 +77,12 @@ let sectionsToHide = document.querySelectorAll(".hide-on-blog")
 let blogSections = document.querySelectorAll(".blog")
 let blogAnim = document.querySelectorAll(".blog-anim")
 let isBlog = false
-let osteo = document.querySelector("#osteopatia")
-
-
-console.log(osteo.getBoundingClientRect().top);
+window.scrollTo({ top: 0, behavior: 'smooth' });
 
 const init = async () => {
     width = window.innerWidth
     height = window.innerHeight
-    await window.scrollTo(0,0);
+    
     // HOME INTRO ANIMATION ///////////////////////////////////////
     // PRELOADER OFF //////////////////////////////////////////////
     let tl = gsap.timeline()
@@ -177,7 +174,7 @@ const init = async () => {
                     scrollTrigger: {
                         trigger: img,
                         //markers: true,
-                        start: 'top 110%',
+                        start: 'top 150%',
                         end: "bottom 25%",
                         toggleActions:"restart pause resume reverse" // onEnter onLeave onEnterBack onLeaveBack
                         // options: play pause resume reset restart complete reverse none
@@ -196,7 +193,7 @@ const init = async () => {
                     scrollTrigger: {
                         trigger: text,
                         //markers: true,
-                        start: 'top 110%',
+                        start: 'top 120%',
                         end: "bottom 25%",
                         toggleActions:"restart pause resume reverse" // onEnter onLeave onEnterBack onLeaveBack
                         // options: play pause resume reset restart complete reverse none
